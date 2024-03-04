@@ -7,23 +7,33 @@
     $email = $_POST["email"];
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
-    $result = $connection->query("SELECT * FROM utenti WHERE username = '$username'");
+    $result = $connection->query("SELECT * FROM utenti");
     if($result){
-        if($result->num_rows == 0){
-            $connection->query("INSERT INTO utenti (nome, password, nome, cognome, email) VALUES('$username', '$password', '$nome', '$cognome', '$email')");
+        $already_exists = false;
+        while($row = $result->fetch_assoc()){
+            if($row["Username"] === $username){
+                $already_exists = true;
+                $location = "../index.php";
+                $_SESSION["message_signup"] = "Username già esistente";
+            }
+            if($row["Email"] === $email){
+                $already_exists = true;
+                $location = "../index.php";
+                $_SESSION["message_signup"] = "Email già esistente";
+            }
+        }
+        if(!$already_exists){
+            $connection->query("INSERT INTO utenti (username, password, nome, cognome, email) VALUES('$username', '$password', '$nome', '$cognome', '$email')");
             if($connection->affected_rows > 0){
                 $_SESSION["username"] = $username;
                 $location = "../pages/benvenuto.php";
             }else{
-                $_SESSION["message"] = "Errore nella creazione utente";
+                $_SESSION["message_signup"] = "Errore nella creazione utente";
                 $location = "../index.php";
             }
-        }else{
-            $_SESSION["message"] = "Username già esistente";
-            $location = "../index.php";
         }
     }else{
-        $_SESSION["message"] = "Errore nel controllo sugli utenti";
+        $_SESSION["message_signup"] = "Errore nel controllo sugli utenti";
         $location = "../index.php";
     }
     header("Location: $location");

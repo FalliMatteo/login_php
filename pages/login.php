@@ -19,6 +19,11 @@
         <input id="input_password" type="password" name="password" required><br><br>
         <button type="submit">Accedi</button>
     </form><br>
+    <?php
+        if(isset($_SESSION["message_login"])){
+            echo "<p class='error'>" . $_SESSION["message_login"] . "</p><br>";
+        }
+    ?>
     <a href="../index.php">Registrati</a>
 </body>
 </html>

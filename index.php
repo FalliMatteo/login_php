@@ -26,8 +26,8 @@
         <button type="submit">Registrati</button>
     </form><br>
     <?php
-        if(isset($_SESSION["message"])){
-            echo "<p class='error'>" . $_SESSION["message"] . "</p><br>";
+        if(isset($_SESSION["message_signup"])){
+            echo "<p class='error'>" . $_SESSION["message_signup"] . "</p><br>";
         }
     ?>
     <a href="pages/login.php">Accedi</a>
