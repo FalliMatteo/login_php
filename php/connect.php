@@ -1,6 +1,6 @@
 <?php
     function connectMySQL(){
-        $connection = new mysqli("localhost", "root", "", "cinema");
+        $connection = new mysqli("localhost", "root", "", "recensioni_ristoranti");
         if($connection->connect_error){
             die($connection->connect_error);
         }

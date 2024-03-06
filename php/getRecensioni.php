@@ -2,12 +2,12 @@
     include "connect.php";
     function getRecensioni(){
         $connection = connectMySQL();
-        $result = $connection->query("SELECT * FROM recensioni as R join film as F on R.CodFilm = F.CodFilm");
+        $result = $connection->query("SELECT R.idrecensione, R.voto, S.nome, U.username FROM recensione as R join ristorante as S on R.codiceristorante = S.codice join utente as U on R.idutente = U.id");
         if($result){
             if($result->num_rows > 0){
-                $string = "<table><tr><th>ID</th><th>Voto</th><th>Film</th><th>Username</th></tr>";
+                $string = "<table><tr><th>ID</th><th>Voto</th><th>Ristorante</th><th>Utente</th></tr>";
                 while($row = $result->fetch_assoc()){
-                    $string .= "<tr><td>" . $row["IDRecensione"] . "</td><td>" . $row["Voto"] . "</td><td>" . $row["Titolo"] . "</td><td>" . $row["Username"] . "</tr>";
+                    $string .= "<tr><td>" . $row["idrecensione"] . "</td><td>" . $row["voto"] . "</td><td>" . $row["nome"] . "</td><td>" . $row["username"] . "</tr>";
                 }
                 $string .= "</table>";
             }else{

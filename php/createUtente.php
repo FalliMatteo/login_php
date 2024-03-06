@@ -7,23 +7,23 @@
     $email = $_POST["email"];
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
-    $result = $connection->query("SELECT * FROM utenti");
+    $result = $connection->query("SELECT * FROM utente");
     if($result){
         $already_exists = false;
         while($row = $result->fetch_assoc()){
-            if($row["Username"] === $username){
+            if($row["username"] === $username){
                 $already_exists = true;
                 $location = "../index.php";
                 $_SESSION["message_signup"] = "Username già esistente";
             }
-            if($row["Email"] === $email){
+            if($row["email"] === $email){
                 $already_exists = true;
                 $location = "../index.php";
                 $_SESSION["message_signup"] = "Email già esistente";
             }
         }
         if(!$already_exists){
-            $connection->query("INSERT INTO utenti (username, password, nome, cognome, email) VALUES('$username', '$password', '$nome', '$cognome', '$email')");
+            $connection->query("INSERT INTO utente (username, password, nome, cognome, email) VALUES('$username', '$password', '$nome', '$cognome', '$email')");
             if($connection->affected_rows > 0){
                 $_SESSION["username"] = $username;
                 $location = "../pages/benvenuto.php";
