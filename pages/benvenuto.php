@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "../php/getRecensioni.php";
+    include "../php/getRecensioniUtente.php";
     $recensioni = getRecensioni();
 ?>
 <html lang="en">
