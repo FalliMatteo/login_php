@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION["username"])){
+        header("Location: ../index.php");
+    }
     include "../php/getRecensioniUtente.php";
     $recensioni = getRecensioni();
 ?>
@@ -16,10 +19,10 @@
         echo "<h1>Benvenuto " . $_SESSION["username"] ."</h1>" . $recensioni;
     ?>
     <br>
-    <button href="inserisciRecensione.php">Inserisci recensione</button><br><br>
-    <button href="cambiaPassword.php">Cambia password</button><br><br>
-    <button href="gestisciRecensione.php">Gestisci recensione</button><br><br>
-    <button href="recensioniRistoranti.php">Visualizza recensioni</button><br><br>
+    <a href="inserisciRecensione.php"><button>Inserisci recensione</button></a><br><br>
+    <a href="cambiaPassword.php"><button>Cambia password</button></a><br><br>
+    <a href="gestisciRecensione.php"><button>Gestisci recensione</button></a><br><br>
+    <a href="recensioniRistoranti.php"><button>Visualizza recensioni</button></a><br><br>
     <a href="../php/logout.php">Logout</a>
 </body>
 </html>
