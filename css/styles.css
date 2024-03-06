@@ -5,4 +5,5 @@
 th, td{
     border: solid black 1px;
     border-collapse: collapse;
+    text-align: start;
 }

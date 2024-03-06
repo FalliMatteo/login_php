@@ -13,9 +13,13 @@
 </head>
 <body>
     <?php
-        echo "<h1>Benvenuto " . $_SESSION["username"] ."</h1><br>" . $recensioni;
+        echo "<h1>Benvenuto " . $_SESSION["username"] ."</h1>" . $recensioni;
     ?>
     <br>
+    <button href="inserisciRecensione.php">Inserisci recensione</button><br><br>
+    <button href="cambiaPassword.php">Cambia password</button><br><br>
+    <button href="gestisciRecensione.php">Gestisci recensione</button><br><br>
+    <button href="recensioniRistoranti.php">Visualizza recensioni</button><br><br>
     <a href="../php/logout.php">Logout</a>
 </body>
 </html>
