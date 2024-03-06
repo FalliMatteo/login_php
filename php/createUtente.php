@@ -26,6 +26,7 @@
             $connection->query("INSERT INTO utente (username, password, nome, cognome, email) VALUES('$username', '$password', '$nome', '$cognome', '$email')");
             if($connection->affected_rows > 0){
                 $_SESSION["username"] = $username;
+                unset($_SESSION["message_signup"]);
                 $location = "../pages/benvenuto.php";
             }else{
                 $_SESSION["message_signup"] = "Errore nella creazione utente";

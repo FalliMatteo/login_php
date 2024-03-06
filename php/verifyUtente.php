@@ -10,6 +10,7 @@
             $row = $result->fetch_assoc();
             if($row["password"] === $password){
                 $_SESSION["username"] = $username;
+                unset($_SESSION["message_login"]);
                 $location = "../pages/benvenuto.php";
             }else{
                 $_SESSION["message_login"] = "Password errata";
