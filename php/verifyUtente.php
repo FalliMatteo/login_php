@@ -3,7 +3,7 @@
     include "connect.php";
     $connection = connectMySQL();
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = hash("sha256", $_POST["password"]);
     $result = $connection->query("SELECT * FROM utente WHERE username = '$username'");
     if($result){
         if($result->num_rows > 0){

@@ -3,7 +3,7 @@
     include "connect.php";
     $connection = connectMySQL();
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = hash("sha256", $_POST["password"]);
     $email = $_POST["email"];
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
