@@ -17,7 +17,7 @@
         <label id="label_new_password" for="input_new_password">Nuova password</label><br>
         <input type="password" id="input_new_password" name="password"><br><br>
         <button type="submit">Cambia password</button>
-    </form><br>
+    </form>
     <?php
         if(isset($_SESSION["message_new_password"])){
             echo "<p class='" . $_SESSION["class_new_password"] . "'>" . $_SESSION["message_new_password"] . "</p><br>";
