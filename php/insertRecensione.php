@@ -14,15 +14,12 @@
         $restaurant = $row["codice"];
         $connection->query("INSERT INTO recensione (voto, idutente, codiceristorante) VALUES($vote, $user, '$restaurant')");
         if($connection->affected_rows > 0){
-            $_SESSION["class_insert_recensione"] = "";
-            $_SESSION["message_insert_recensione"] = "Aggiunta recensione";
+            $_SESSION["message_insert_recensione"] = "<p>Aggiunta recensione</p>";
         }else{
-            $_SESSION["class_insert_recensione"] = "error";
-            $_SESSION["message_insert_recensione"] = "Recensione non aggiunta";
+            $_SESSION["message_insert_recensione"] = "<p class='error'>Recensione non aggiunta</p>";
         }
     }else{
-        $_SESSION["class_insert_recensione"] = "error";
-        $_SESSION["message_insert_recensione"] = "Ristorante inesistente";
+        $_SESSION["message_insert_recensione"] = "<p class='error'>Ristorante inesistente</p>";
     }
     header("Location: ../pages/inserisciRecensione.php");
 ?>

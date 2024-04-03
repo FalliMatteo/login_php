@@ -3,6 +3,9 @@
     if(!isset($_SESSION["username"])){
         header("Location: ../index.php");
     }
+    unset($_SESSION["message_recensioni_ristorante"]);
+    unset($_SESSION["message_new_password"]);
+    unset($_SESSION["message_insert_recensione"]);
     include "../php/getRecensioniUtente.php";
     $recensioni = getRecensioni();
 ?>
@@ -22,7 +25,7 @@
     <a href="inserisciRecensione.php"><button>Inserisci recensione</button></a><br><br>
     <a href="cambiaPassword.php"><button>Cambia password</button></a><br><br>
     <a href="gestisciRecensione.php"><button>Gestisci recensione</button></a><br><br>
-    <a href="recensioniRistoranti.php"><button>Visualizza recensioni</button></a><br><br>
+    <a href="recensioniRistorante.php"><button>Visualizza recensioni</button></a><br><br>
     <a href="../php/logout.php">Logout</a>
 </body>
 </html>

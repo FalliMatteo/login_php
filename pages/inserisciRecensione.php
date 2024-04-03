@@ -15,19 +15,19 @@
     <title>Inserisci recensione</title>
 </head>
 <body>
-    <?php
-        echo $ristoranti;
-    ?>
     <form action="../php/insertRecensione.php" method="POST">
         <label id="label_voto" for="input_voto">Voto</label><br>
         <input type="number" id="input_voto" name="voto" min="1" max="5"><br><br>
-        <label id="label_ristorante" for="input_ristorante">Nome ristorante</label><br>
-        <input type="text" id="input_ristorante" name="ristorante"><br><br>
+        Ristorante<br>
+        <?php
+            echo $ristoranti;
+        ?>
+        <br><br>
         <button type="submit">Conferma</button>
     </form>
     <?php
         if(isset($_SESSION["message_insert_recensione"])){
-            echo "<p class='" . $_SESSION["class_insert_recensione"] . "'>" . $_SESSION["message_insert_recensione"] . "</p><br>";
+            echo $_SESSION["message_insert_recensione"];
         }
     ?>
     <a href="benvenuto.php">Torna alla home</a>

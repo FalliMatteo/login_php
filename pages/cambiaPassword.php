@@ -20,7 +20,7 @@
     </form>
     <?php
         if(isset($_SESSION["message_new_password"])){
-            echo "<p class='" . $_SESSION["class_new_password"] . "'>" . $_SESSION["message_new_password"] . "</p><br>";
+            echo $_SESSION["message_new_password"];
         }
     ?>
     <a href="benvenuto.php">Torna alla home</a>
