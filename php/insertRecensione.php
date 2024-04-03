@@ -8,10 +8,8 @@
     $result = $connection->query("SELECT id FROM utente WHERE username = '$username'");
     $row = $result->fetch_assoc();
     $user = $row["id"];
-    $result = $connection->query("SELECT codice FROM ristorante WHERE nome = '$restaurant'");
+    $result = $connection->query("SELECT * FROM ristorante WHERE codice = '$restaurant'");
     if($result->num_rows > 0){
-        $row = $result->fetch_assoc();
-        $restaurant = $row["codice"];
         $connection->query("INSERT INTO recensione (voto, idutente, codiceristorante) VALUES($vote, $user, '$restaurant')");
         if($connection->affected_rows > 0){
             $_SESSION["message_insert_recensione"] = "<p>Aggiunta recensione</p>";
